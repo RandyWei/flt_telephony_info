@@ -24,11 +24,14 @@ dependencies:
 
 ## Android
 
-  dataNetworkType Requires permission:android.permission.READ_PHONE_STATE
+  dataNetworkType
+  Requires permission:android.permission.READ_PHONE_STATE
 
-  deviceSoftwareVersion Requires permission:android.permission.READ_PHONE_STATE
+  deviceSoftwareVersion
+  Requires permission:android.permission.READ_PHONE_STATE
 
-  IMEI(International Mobile Equipment Identity)（imei）Requires permission:android.permission.READ_PHONE_STATE
+  IMEI(International Mobile Equipment Identity)（imei）
+  Requires permission:android.permission.READ_PHONE_STATE
 
 
   isDataEnabled
@@ -36,15 +39,17 @@ dependencies:
   android.permission.ACCESS_NETWORK_STATE
   android.permission.MODIFY_PHONE_STATE
 
-  line1Numbe）
+  line1Number
   Requires one of the following permissions:
   android.permission.READ_PHONE_STATE
   android.permission.READ_SMS
   android.permission.READ_PHONE_NUMBERS
 
-  MEID (Mobile Equipment Identifier)（meid） Requires permission:android.permission.READ_PHONE_STATE
+  MEID (Mobile Equipment Identifier)（meid）
+  Requires permission:android.permission.READ_PHONE_STATE
 
-  Network Access Identifier (NAI)  Requires permission:android.permission.READ_PHONE_STATE
+  Network Access Identifier (NAI)
+  Requires permission:android.permission.READ_PHONE_STATE
 ```xml
 <manifest
     ...
