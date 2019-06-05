@@ -7,7 +7,7 @@ Android:based on TelephonyManager
 iOS：based on [CoreTelephony](https://developer.apple.com/documentation/coretelephony)
 
 
-## ENGLISH         [中文](https://github.com/RandyWei/flt_telephony_info/blob/master/README.md)
+## ENGLISH    |     [中文](https://github.com/RandyWei/flt_telephony_info/blob/master/README.md)
 
 ## Installation
 ```
@@ -110,3 +110,7 @@ class _MyAppState extends State<MyApp> {
 }
 
 ```
+
+## Other
+[Home Page](https://www.bughub.dev)
+[Video Player Based On TxVodPlayer](https://pub.flutter-io.cn/packages/flt_video_player)

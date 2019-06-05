@@ -7,7 +7,7 @@ Android:基于TelephonyManager
 iOS：基于[CoreTelephony](https://developer.apple.com/documentation/coretelephony)
 
 
-## [ENGLISH](https://github.com/RandyWei/flt_telephony_info/blob/master/README.md)         中文
+## [ENGLISH](https://github.com/RandyWei/flt_telephony_info/blob/master/README.md)    |     中文
 
 ## 使用
 ```
@@ -112,3 +112,7 @@ class _MyAppState extends State<MyApp> {
 }
 
 ```
+
+## 其他
+[作者主页](https://www.bughub.dev)
+[视频播放器flt_video_player](https://pub.flutter-io.cn/packages/flt_video_player)
