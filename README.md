@@ -1,10 +1,13 @@
 # flt_telephony_info
 
 get telephony info：
+
 Android:based on TelephonyManager
+
 iOS：based on [CoreTelephony](https://developer.apple.com/documentation/coretelephony)
 
-## ENGLISH  [中文](https://github.com/RandyWei/flt_telephony_info/blob/master/README.md)
+
+## ENGLISH         [中文](https://github.com/RandyWei/flt_telephony_info/blob/master/README.md)
 
 ## Installation
 ```

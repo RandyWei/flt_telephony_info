@@ -1,10 +1,13 @@
 # flt_telephony_info
 
 获取SIM卡信息：
+
 Android:基于TelephonyManager
+
 iOS：基于[CoreTelephony](https://developer.apple.com/documentation/coretelephony)
 
-## [ENGLISH](https://github.com/RandyWei/flt_telephony_info/blob/master/README.md)   中文
+
+## [ENGLISH](https://github.com/RandyWei/flt_telephony_info/blob/master/README.md)         中文
 
 ## 使用
 ```
