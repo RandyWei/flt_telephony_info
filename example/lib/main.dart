@@ -16,10 +16,10 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    initPlatformState();
+    getTelephonyInfo();
   }
 
-  Future<void> initPlatformState() async {
+  Future<void> getTelephonyInfo() async {
     TelephonyInfo info;
     try {
       info = await FltTelephonyInfo.info;
@@ -40,7 +40,7 @@ class _MyAppState extends State<MyApp> {
           title: const Text('Plugin example app'),
         ),
         body: Center(
-          child: Text('Telephone Info: ${_info?.toString()}\n'),
+          child: Text('Phone Number: ${_info?.line1Number}\n'),
         ),
       ),
     );
