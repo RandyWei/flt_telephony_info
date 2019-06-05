@@ -115,4 +115,5 @@ class _MyAppState extends State<MyApp> {
 
 ## 其他
 [作者主页](https://www.bughub.dev)
+
 [视频播放器flt_video_player](https://pub.flutter-io.cn/packages/flt_video_player)
