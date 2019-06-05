@@ -45,7 +45,7 @@ dependencies:
   MEID (Mobile Equipment Identifier)（meid） Requires permission:android.permission.READ_PHONE_STATE
 
   Network Access Identifier (NAI)  Requires permission:android.permission.READ_PHONE_STATE
-
+```xml
 <manifest
     ...
     xmlns:tools="http://schemas.android.com/tools" >
@@ -56,7 +56,7 @@ dependencies:
     <uses-permission android:name="android.permission.READ_PHONE_NUMBERS"/>
     ...
 </manifest>
-
+```
 ## Example
 
 ```dart
