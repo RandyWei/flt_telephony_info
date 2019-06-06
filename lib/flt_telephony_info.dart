@@ -241,6 +241,10 @@ class TelephonyInfo {
     );
   }
 
+  String rawString() {
+    return _map.toString();
+  }
+
   @override
   String toString() {
     super.toString();

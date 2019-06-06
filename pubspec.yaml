@@ -2,7 +2,6 @@ name: flt_telephony_info
 description: A new Flutter plugin , get telephony info ,based on TelephonyManager in Android and based on CoreTelephony in iOS
 version: 0.1.0
 author: Randy Wei<smile561607154@163.com>
-homepage: https://www.bubhub.dev
 repository: https://github.com/RandyWei/flt_telephony_info
 
 
