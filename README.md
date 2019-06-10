@@ -25,31 +25,51 @@ dependencies:
 ## Android
 
   dataNetworkType
+
   Requires permission:android.permission.READ_PHONE_STATE
+
 
   deviceSoftwareVersion
+
   Requires permission:android.permission.READ_PHONE_STATE
 
+
   IMEI(International Mobile Equipment Identity)（imei）
+
   Requires permission:android.permission.READ_PHONE_STATE
+
 
 
   isDataEnabled
+
   Requires one of the following permissions:
+
   android.permission.ACCESS_NETWORK_STATE
+
   android.permission.MODIFY_PHONE_STATE
 
+
   line1Number
+
   Requires one of the following permissions:
+
   android.permission.READ_PHONE_STATE
+
   android.permission.READ_SMS
+
   android.permission.READ_PHONE_NUMBERS
 
+
+
   MEID (Mobile Equipment Identifier)（meid）
+
   Requires permission:android.permission.READ_PHONE_STATE
 
+
   Network Access Identifier (NAI)
+
   Requires permission:android.permission.READ_PHONE_STATE
+
 ```xml
 <manifest
     ...
@@ -62,6 +82,31 @@ dependencies:
     ...
 </manifest>
 ```
+
+## iOS
+
+Getting Information About the Cellular Service Provider
+
+var allowsVOIP: Bool
+
+Indicates if the carrier allows making VoIP calls on its network.
+
+var carrierName: String?
+
+The name of the user’s home cellular service provider.
+
+var isoCountryCode: String?
+
+The ISO country code for the user’s cellular service provider.
+
+var mobileCountryCode: String?
+
+The mobile country code (MCC) for the user’s cellular service provider.
+
+var mobileNetworkCode: String?
+
+The mobile network code for the user’s cellular service provider.
+
 ## Example
 
 ```dart

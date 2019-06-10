@@ -59,6 +59,10 @@ dependencies:
     ...
 </manifest>
 ```
+
+## iOS
+iOS 由于隐私,无法获取手机号
+
 ## 示例
 
 ```dart
