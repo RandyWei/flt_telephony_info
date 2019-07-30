@@ -2,10 +2,9 @@ package dev.bughub.flt_telephony_info
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.pm.PackageManager
 import android.os.Build
-import android.support.v4.content.ContextCompat
-import android.support.v4.content.PermissionChecker.PERMISSION_GRANTED
+import androidx.core.content.ContextCompat
+import androidx.core.content.PermissionChecker.PERMISSION_GRANTED
 import android.telephony.TelephonyManager
 import android.util.Log
 import io.flutter.plugin.common.MethodCall
@@ -13,8 +12,6 @@ import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
 import io.flutter.plugin.common.PluginRegistry.Registrar
-import java.security.Permission
-import java.security.Permissions
 
 class FltTelephonyInfoPlugin(var registrar: Registrar) : MethodCallHandler {
     companion object {
