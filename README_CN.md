@@ -13,7 +13,7 @@ iOS：基于[CoreTelephony](https://developer.apple.com/documentation/coreteleph
 ```
 //pub
 dependencies:
-  flt_telephony_info: ^lastest_version
+  flt_telephony_info: any
 
 //import
 dependencies:
