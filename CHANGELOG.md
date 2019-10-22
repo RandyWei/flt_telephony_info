@@ -1,3 +1,7 @@
+## 0.1.3
+
+* fixed bug
+
 ## 0.1.2
 
 * Migrate to AndroidX

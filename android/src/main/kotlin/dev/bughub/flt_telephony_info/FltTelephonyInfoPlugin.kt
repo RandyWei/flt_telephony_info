@@ -29,10 +29,10 @@ class FltTelephonyInfoPlugin(var registrar: Registrar) : MethodCallHandler {
             val telephonyManager = registrar.activeContext().getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
 
 
-            if (ContextCompat.checkSelfPermission(registrar.activeContext(), android.Manifest.permission.ACCESS_COARSE_LOCATION) == PERMISSION_GRANTED
-                    && Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-                Log.i("getTelephonyInfo", telephonyManager.allCellInfo.toString())
-            }
+//            if (ContextCompat.checkSelfPermission(registrar.activeContext(), android.Manifest.permission.ACCESS_COARSE_LOCATION) == PERMISSION_GRANTED
+//                    && Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+//                Log.i("getTelephonyInfo", telephonyManager.allCellInfo.toString())
+//            }
 
             val resultMap = HashMap<String, Any?>()
 
