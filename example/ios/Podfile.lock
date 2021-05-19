@@ -1,38 +1,22 @@
 PODS:
-  - AMap3DMap (6.6.0):
-    - AMapFoundation (~> 1.5)
-  - AMapFoundation (1.5.6)
-  - AMapSearch (6.6.0):
-    - AMapFoundation (~> 1.4)
   - flt_telephony_info (0.0.1):
     - Flutter
-  - Flutter (1.0.0):
-    - AMap3DMap
-    - AMapSearch
+  - Flutter (1.0.0)
 
 DEPENDENCIES:
   - flt_telephony_info (from `.symlinks/plugins/flt_telephony_info/ios`)
-  - Flutter (from `.symlinks/flutter/ios`)
-
-SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
-    - AMap3DMap
-    - AMapFoundation
-    - AMapSearch
+  - Flutter (from `Flutter`)
 
 EXTERNAL SOURCES:
   flt_telephony_info:
     :path: ".symlinks/plugins/flt_telephony_info/ios"
   Flutter:
-    :path: ".symlinks/flutter/ios"
+    :path: Flutter
 
 SPEC CHECKSUMS:
-  AMap3DMap: 37425c7d47420cbfaee88328be3dc3781814b999
-  AMapFoundation: 20fce2a12cd152e1092afdd04379cdac21932185
-  AMapSearch: def5983c8ca1a6d7430970046dc814f6e337621d
-  flt_telephony_info: 37920468ca9f439bbb4263749765f0daca747a30
-  Flutter: eac8f506f14c84f31da3c65b1b4ca3347b773ed9
+  flt_telephony_info: effecf5e0b0dc252e6022077cca1d473fce831f6
+  Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
 
-PODFILE CHECKSUM: aff02bfeed411c636180d6812254b2daeea14d09
+PODFILE CHECKSUM: 8e679eca47255a8ca8067c4c67aab20e64cb974d
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.10.1
