@@ -1,19 +1,16 @@
 import 'dart:async';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
+import 'package:meta/meta.dart';
 
 class FltTelephonyInfo {
-  static const MethodChannel _channel =
+  @visibleForTesting
+  static const MethodChannel channel =
       const MethodChannel('bughub.dev/flt_telephony_info');
 
-  static Future<TelephonyInfo> get info async {
-
-    final TelephonyInfo telephonyInfo =
-        TelephonyInfo.fromMap(await _channel.invokeMapMethod<String, dynamic>('getTelephonyInfo'));
-
-    return telephonyInfo;
-  }
+  static Future<TelephonyInfo> get info async => TelephonyInfo.fromMap(
+      await channel.invokeMapMethod<String, dynamic>('getTelephonyInfo') ??
+          const {});
 }
 
 class CallState {
