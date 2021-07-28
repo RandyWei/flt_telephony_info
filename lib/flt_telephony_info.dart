@@ -7,9 +7,9 @@ class FltTelephonyInfo {
   static const MethodChannel _channel =
       const MethodChannel('bughub.dev/flt_telephony_info');
 
-  static Future<TelephonyInfo> get info async {
+  static Future<TelephonyInfo?> get info async {
 
-    final TelephonyInfo telephonyInfo =
+    final TelephonyInfo? telephonyInfo =
         TelephonyInfo.fromMap(await _channel.invokeMapMethod<String, dynamic>('getTelephonyInfo'));
 
     return telephonyInfo;
