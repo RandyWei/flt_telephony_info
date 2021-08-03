@@ -180,6 +180,7 @@ class FltTelephonyInfoPlugin : FlutterPlugin, MethodCallHandler {
                     android.Manifest.permission.READ_PHONE_STATE
                 ) == PERMISSION_GRANTED
                 && Build.VERSION.SDK_INT >= Build.VERSION_CODES.P
+                && Build.VERSION.SDK_INT < Build.VERSION_CODES.Q
             ) {
                 resultMap["nai"] = telephonyManager.nai
             }
