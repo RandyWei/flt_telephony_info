@@ -26,6 +26,32 @@
           dict[@"simCarrierIdName"]=carrierName;
       }
       
+      dict[@"dataNetworkType"]=@0;
+      NSString *dataNetworkType= networkInfo.currentRadioAccessTechnology;
+      if ([dataNetworkType isEqualToString:CTRadioAccessTechnologyGPRS]) {
+          dict[@"dataNetworkType"]=@1;
+      } else if ([dataNetworkType isEqualToString:CTRadioAccessTechnologyEdge]) {
+          dict[@"dataNetworkType"]=@2;
+      } else if ([dataNetworkType isEqualToString:CTRadioAccessTechnologyCDMA1x]) {
+          dict[@"dataNetworkType"]=@3;
+      } else if ([dataNetworkType isEqualToString:CTRadioAccessTechnologyWCDMA]) {
+          dict[@"dataNetworkType"]=@4;
+      } else if ([dataNetworkType isEqualToString:CTRadioAccessTechnologyCDMAEVDORev0]) {
+          dict[@"dataNetworkType"]=@5;
+      } else if ([dataNetworkType isEqualToString:CTRadioAccessTechnologyCDMAEVDORevA]) {
+          dict[@"dataNetworkType"]=@6;
+      } else if ([dataNetworkType isEqualToString:CTRadioAccessTechnologyHSDPA]) {
+          dict[@"dataNetworkType"]=@8;
+      } else if ([dataNetworkType isEqualToString:CTRadioAccessTechnologyHSUPA]) {
+          dict[@"dataNetworkType"]=@9;
+      } else if ([dataNetworkType isEqualToString:CTRadioAccessTechnologyCDMAEVDORevB]) {
+          dict[@"dataNetworkType"]=@12;
+      } else if ([dataNetworkType isEqualToString:CTRadioAccessTechnologyLTE]) {
+          dict[@"dataNetworkType"]=@13;
+      } else if ([dataNetworkType isEqualToString:CTRadioAccessTechnologyeHRPD]) {
+          dict[@"dataNetworkType"]=@14;
+      }
+      
       NSMutableString *operator = [[NSMutableString alloc]init];
       //国家编号
       NSString *mobileCountryCode=  carrier.mobileCountryCode;
