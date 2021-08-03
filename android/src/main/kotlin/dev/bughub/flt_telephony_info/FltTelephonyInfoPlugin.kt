@@ -6,29 +6,24 @@ import android.os.Build
 import android.telephony.TelephonyManager
 import androidx.core.content.ContextCompat
 import androidx.core.content.PermissionChecker.PERMISSION_GRANTED
+import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
-import io.flutter.plugin.common.PluginRegistry.Registrar
+import io.flutter.plugin.common.MethodChannel.Result
 
-class FltTelephonyInfoPlugin(var registrar: Registrar) : MethodCallHandler {
-    companion object {
-        @JvmStatic
-        fun registerWith(registrar: Registrar) {
-            val channel = MethodChannel(registrar.messenger(), "bughub.dev/flt_telephony_info")
-            channel.setMethodCallHandler(FltTelephonyInfoPlugin(registrar))
-        }
-    }
+class FltTelephonyInfoPlugin : FlutterPlugin, MethodCallHandler {
+    private var context: Context? = null
+    private var methodChannel: MethodChannel? = null
 
     @SuppressLint("MissingPermission")
-    override fun onMethodCall(call: MethodCall, result: MethodChannel.Result) {
+    override fun onMethodCall(call: MethodCall, result: Result) {
         if (call.method == "getTelephonyInfo") {
 
-            val telephonyManager = registrar.activeContext()
-                .getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
+            val telephonyManager = context!!.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
 
 
-//            if (ContextCompat.checkSelfPermission(registrar.activeContext(), android.Manifest.permission.ACCESS_COARSE_LOCATION) == PERMISSION_GRANTED
+//            if (ContextCompat.checkSelfPermission(context!!, android.Manifest.permission.ACCESS_COARSE_LOCATION) == PERMISSION_GRANTED
 //                    && Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
 //                Log.i("getTelephonyInfo", telephonyManager.allCellInfo.toString())
 //            }
@@ -74,30 +69,17 @@ class FltTelephonyInfoPlugin(var registrar: Registrar) : MethodCallHandler {
              * @see #NETWORK_TYPE_HSPAP
              */
             //网络类型
-            if (ContextCompat.checkSelfPermission(
-                    registrar.activeContext(),
-                    android.Manifest.permission.READ_PHONE_STATE
-                ) == PERMISSION_GRANTED
-                && Build.VERSION.SDK_INT >= Build.VERSION_CODES.N
-            ) {
+            if (ContextCompat.checkSelfPermission(context!!, android.Manifest.permission.READ_PHONE_STATE) == PERMISSION_GRANTED
+                    && Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                 resultMap["dataNetworkType"] = telephonyManager.dataNetworkType
             }
 
             //软件版本
-            if (ContextCompat.checkSelfPermission(
-                    registrar.activeContext(),
-                    android.Manifest.permission.READ_PHONE_STATE
-                ) == PERMISSION_GRANTED
-            )
+            if (ContextCompat.checkSelfPermission(context!!, android.Manifest.permission.READ_PHONE_STATE) == PERMISSION_GRANTED)
                 resultMap["deviceSoftwareVersion"] = telephonyManager.deviceSoftwareVersion
 
             //IMEI
-            if (ContextCompat.checkSelfPermission(
-                    registrar.activeContext(),
-                    android.Manifest.permission.READ_PHONE_STATE
-                ) == PERMISSION_GRANTED && Build.VERSION.SDK_INT >= Build.VERSION_CODES.O
-                && Build.VERSION.SDK_INT < Build.VERSION_CODES.Q
-            ) {
+            if (ContextCompat.checkSelfPermission(context!!, android.Manifest.permission.READ_PHONE_STATE) == PERMISSION_GRANTED && Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
                 resultMap["imei"] = telephonyManager.imei
             }
 
@@ -120,16 +102,9 @@ class FltTelephonyInfoPlugin(var registrar: Registrar) : MethodCallHandler {
              *
              * @return true if mobile data is enabled.
              */
-            if ((ContextCompat.checkSelfPermission(
-                    registrar.activeContext(),
-                    android.Manifest.permission.ACCESS_NETWORK_STATE
-                ) == PERMISSION_GRANTED ||
-                        ContextCompat.checkSelfPermission(
-                            registrar.activeContext(),
-                            android.Manifest.permission.MODIFY_PHONE_STATE
-                        ) == PERMISSION_GRANTED)
-                && Build.VERSION.SDK_INT >= Build.VERSION_CODES.O
-            ) {
+            if ((ContextCompat.checkSelfPermission(context!!, android.Manifest.permission.ACCESS_NETWORK_STATE) == PERMISSION_GRANTED ||
+                            ContextCompat.checkSelfPermission(context!!, android.Manifest.permission.MODIFY_PHONE_STATE) == PERMISSION_GRANTED)
+                    && Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 resultMap["isDataEnabled"] = telephonyManager.isDataEnabled
             }
 
@@ -152,39 +127,20 @@ class FltTelephonyInfoPlugin(var registrar: Registrar) : MethodCallHandler {
 //            }
 
             //手机号码(不一定能获取到)
-            if (ContextCompat.checkSelfPermission(
-                    registrar.activeContext(),
-                    android.Manifest.permission.READ_PHONE_STATE
-                ) == PERMISSION_GRANTED
-                || ContextCompat.checkSelfPermission(
-                    registrar.activeContext(),
-                    android.Manifest.permission.READ_SMS
-                ) == PERMISSION_GRANTED
-                || ContextCompat.checkSelfPermission(
-                    registrar.activeContext(),
-                    android.Manifest.permission.READ_PHONE_NUMBERS
-                ) == PERMISSION_GRANTED
-            )
+            if (ContextCompat.checkSelfPermission(context!!, android.Manifest.permission.READ_PHONE_STATE) == PERMISSION_GRANTED
+                    || ContextCompat.checkSelfPermission(context!!, android.Manifest.permission.READ_SMS) == PERMISSION_GRANTED
+                    || ContextCompat.checkSelfPermission(context!!, android.Manifest.permission.READ_PHONE_NUMBERS) == PERMISSION_GRANTED)
                 resultMap["line1Number"] = telephonyManager.line1Number
 
             //MEID
-            if (ContextCompat.checkSelfPermission(
-                    registrar.activeContext(),
-                    android.Manifest.permission.READ_PHONE_STATE
-                ) == PERMISSION_GRANTED
-                && Build.VERSION.SDK_INT >= Build.VERSION_CODES.O
-                && Build.VERSION.SDK_INT < Build.VERSION_CODES.Q
-            ) {
+            if (ContextCompat.checkSelfPermission(context!!, android.Manifest.permission.READ_PHONE_STATE) == PERMISSION_GRANTED
+                    && Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
                 resultMap["meid"] = telephonyManager.meid
             }
 
             //NAI
-            if (ContextCompat.checkSelfPermission(
-                    registrar.activeContext(),
-                    android.Manifest.permission.READ_PHONE_STATE
-                ) == PERMISSION_GRANTED
-                && Build.VERSION.SDK_INT >= Build.VERSION_CODES.P
-            ) {
+            if (ContextCompat.checkSelfPermission(context!!, android.Manifest.permission.READ_PHONE_STATE) == PERMISSION_GRANTED
+                    && Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
                 resultMap["nai"] = telephonyManager.nai
             }
 
@@ -249,14 +205,10 @@ class FltTelephonyInfoPlugin(var registrar: Registrar) : MethodCallHandler {
              */
             resultMap["phoneType"] = telephonyManager.phoneType
 
-            if (ContextCompat.checkSelfPermission(
-                    registrar.activeContext(),
-                    android.Manifest.permission.READ_PHONE_STATE
-                ) == PERMISSION_GRANTED
-                && Build.VERSION.SDK_INT >= Build.VERSION_CODES.O
-            ) {
-                //resultMap["serviceState"] = telephonyManager.serviceState
-            }
+//            if (ContextCompat.checkSelfPermission(context!!, android.Manifest.permission.READ_PHONE_STATE) == PERMISSION_GRANTED
+//                    && Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//                resultMap["serviceState"] = telephonyManager.serviceState
+//            }
 
             //运营商ID
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
@@ -279,11 +231,7 @@ class FltTelephonyInfoPlugin(var registrar: Registrar) : MethodCallHandler {
             resultMap["simOperatorName"] = telephonyManager.simOperatorName
 
             //SIM 序列号
-            if (ContextCompat.checkSelfPermission(
-                    registrar.activeContext(),
-                    android.Manifest.permission.READ_PHONE_STATE
-                ) == PERMISSION_GRANTED && Build.VERSION.SDK_INT < Build.VERSION_CODES.Q
-            )
+            if (ContextCompat.checkSelfPermission(context!!, android.Manifest.permission.READ_PHONE_STATE) == PERMISSION_GRANTED && Build.VERSION.SDK_INT < Build.VERSION_CODES.Q)
                 resultMap["simSerialNumber"] = telephonyManager.simSerialNumber
 
 
@@ -291,5 +239,15 @@ class FltTelephonyInfoPlugin(var registrar: Registrar) : MethodCallHandler {
         } else {
             result.notImplemented()
         }
+    }
+
+    override fun onAttachedToEngine(binding: FlutterPlugin.FlutterPluginBinding) {
+        context = binding.applicationContext
+        methodChannel = MethodChannel(binding.binaryMessenger, "bughub.dev/flt_telephony_info")
+        methodChannel!!.setMethodCallHandler(this)
+    }
+
+    override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {
+        methodChannel!!.setMethodCallHandler(null)
     }
 }
